@@ -1,12 +1,17 @@
 {
   "name": "short url for amazon, wiki",
   "short_name": "short url",
-  "version": "1.0.0",
-  "manifest_version": 2,
+  "version": "1.1.0",
+  "manifest_version": 3,
   "description": "short url to clipboard",
   "author": "ctrlzr",
   "default_locale": "ja",
   "permissions": [
+    "activeTab",
+    "contextMenus",
+    "clipboardWrite"
+  ],
+  "host_permissions": [
     "https://www.amazon.com/*",
     "https://www.amazon.co.uk/*",
     "https://www.amazon.de/*",
@@ -20,11 +25,7 @@
     "https://www.amazon.com.br/*",
     "https://www.amazon.com.mx/*",
     "https://www.amazon.nl/*",
-    "https://*.wikipedia.org/wiki/*",
-    "activeTab",
-    "background",
-    "contextMenus",
-    "clipboardWrite"
+    "https://*.wikipedia.org/wiki/*"
   ],
   "content_scripts": [{
     "matches": [
@@ -46,9 +47,9 @@
     "js": ["js/content.js"]
   }],
   "background": {
-    "scripts": ["js/background.js"]
+    "service_worker": "js/background.js"
   },
-  "browser_action": {
+  "action": {
     "default_icon": "img/icon-16x16.png",
     "default_title": "short url"
   },
